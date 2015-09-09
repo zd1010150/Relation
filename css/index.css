@@ -12,8 +12,8 @@
     stroke: red;
 }
 .event-line {
-    stroke-width: 5;
-    
+    stroke: transparent;
+    stroke-width: 15;
 }
 
 .node text {

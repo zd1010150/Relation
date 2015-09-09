@@ -39,7 +39,7 @@ function ForceMap(options) {
         .linkDistance(function (d) { // 节点之间的距离，默认为130。距离的权重越大，距离越小，d.weight值约定在[0-100]
             return 130 - (~~d.weight);
         })
-        .charge(-150)
+        .charge(-150) // 节点之间排斥（负数）力度
         .size([width, height])
         .start();
     force.drag()
@@ -56,6 +56,7 @@ function ForceMap(options) {
         });
     var linkTipTimer;
     svg.call(linkTip);
+
     // paint links first so that put link under the node, link will not trigger mouse event
 
     var links = svg.selectAll('.link')
@@ -68,16 +69,24 @@ function ForceMap(options) {
                 classNames.push('dotted');
             }
             return classNames.join(' ');
-        })
+        });
+    // 辅助事件线，细线很难选择触发事件，这个辅助线是透明的宽线。就这点用
+    var eventlinks = svg.selectAll('.event-line')
+        .data(linksData)
+        .enter()
+        .append('line')
+        .attr('class', 'event-line')
         .on('mouseover', function (d) {
-            d3.select(this).classed('involed', true);
+            d.involed = true;
+            render();
             if (linkTipTimer) {
                 clearTimeout(linkTipTimer);
             }
             linkTip.show(d);
         })
         .on('mouseout', function (d) {
-            d3.select(this).classed('involed', false);
+            d.involed = false;
+            render();
             if (linkTipTimer) {
                 clearTimeout(linkTipTimer);
             }
@@ -165,7 +174,18 @@ function ForceMap(options) {
         });
 
     force.on("tick", function() {
-        links.attr("x1", function(d) {
+        setLinePosition(links);
+        setLinePosition(eventlinks);
+
+        nodes.attr("transform", function(d) {
+            return "translate(" + d.x + "," + d.y + ")";
+        });
+    });
+    /**
+     * [setLinePosition 设置连线的坐标，力图通用]
+     */
+    function setLinePosition(lines) {
+        lines.attr("x1", function(d) {
             return d.source.x;
         })
         .attr("y1", function(d) {
@@ -177,11 +197,7 @@ function ForceMap(options) {
         .attr("y2", function(d) {
             return d.target.y;
         });
-
-        nodes.attr("transform", function(d) {
-            return "translate(" + d.x + "," + d.y + ")";
-        });
-    });
+    }
 
     /**
      * [hightlightLinked 高亮相邻节点和连续]
@@ -194,7 +210,9 @@ function ForceMap(options) {
         });
         render();
     }
-
+    /**
+     * [clearHighligt 清楚高亮]
+     */
     function clearHighligt () {
         nodesData.forEach(function (item) {
             item.involed = false;
@@ -205,29 +223,28 @@ function ForceMap(options) {
         render();
     }
 
-    function render () {
-        svg.selectAll('.node')
-            .attr('class', function(d) {
+    function render () { // 根据是否高亮重绘
+        function renderEle (selectors) {
+            selectors.attr('class', function(d) {
                 var classNames = this.classList;
                 if (d.involed) {
-                    this.classList.add('involed');
+                    this.classList.add('involed'); // 关联
                 } else {
                     this.classList.remove('involed');
                 }
                 return this.classList;
             });
-        svg.selectAll('.link')
-            .attr('class', function(d) {
-                var classNames = this.classList;
-                if (d.involed) {
-                    this.classList.add('involed');
-                } else {
-                    this.classList.remove('involed');
-                }
-                return this.classList;
-            });
+        }
+        renderEle(svg.selectAll('.node'));
+        renderEle(svg.selectAll('.link'));
+
     }
 
+    /**
+     * [findLinkedNodesById 根据node id 查找links 相关联的node]
+     * @param  {[String]} id [Node id]
+     * @return {[Array]}    [Node数组]
+     */
     function findLinkedNodesById (id) {
         return linksData.reduce(function (ret, item) {
             if (item.sourceId === id) {
