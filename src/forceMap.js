@@ -53,10 +53,10 @@ function ForceMap(options) {
             }
             return classNames.join(' ');
         })
-        .append('text')
-        .text(function (d) {
-            return d.name;
-        });
+        // .append('text')
+        // .text(function (d) {
+        //     return d.name;
+        // });
 
     var nodes = svg.selectAll('.node')
         .data(nodesData)
