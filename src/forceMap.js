@@ -1,4 +1,8 @@
 'use strict';
+function redirect(id){
+
+    window.location.href="relation-3.html?id="+id;
+}
 
 function ForceMap(options) {
     var container = options.container || document.body,
@@ -118,6 +122,9 @@ function ForceMap(options) {
             return classNames.join(' ');
         })
         .call(force.drag)
+        .on('click',function(d){
+            redirect(d.id);
+        })
         .on('mouseover', function (d) {
             d3.select(this).classed('primary', true);
             hightlightLinked(d.id);
