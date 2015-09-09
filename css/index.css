@@ -12,8 +12,13 @@
     stroke: red;
 }
 .event-line {
+<<<<<<< HEAD
     stroke-width: 5;
 
+=======
+    stroke: transparent;
+    stroke-width: 15;
+>>>>>>> 248e613008b0b7df1b7ef9aca118eec4511a0ff9
 }
 
 .node text {
