@@ -1,0 +1,28 @@
+.link {
+  stroke: #666;
+}
+
+.link.dotted {
+    stroke: #ccc;
+    stroke-dasharray: 5 5;
+    /*box-shadow: 0 0 5px rgba(81, 203, 238, 1);*/
+}
+
+.link.involed {
+    stroke: red;
+}
+
+.node text {
+  pointer-events: none;
+  font: 10px sans-serif;
+}
+.node.involed circle{
+    stroke: orange;
+}
+.node.involed text{
+    stroke: orange;
+}
+
+.hidden {
+    display: none;
+}
