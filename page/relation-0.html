@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ali 414</title>
+	<style>
+	#main{
+		width:1024px;
+		height:600px;
+		margin-top:0px;
+		margin-left: auto;
+		margin-right:auto;
+		margin-bottom: 10px;
+	}
+	body{
+		background-color:#f5f5f5;
+	}
+	.main-text{
+		font-family: '微软雅黑';
+		font-size:36px;
+		text-align:center;
+	}
+	p{
+		margin:0px;	
+	}
+
+	</style>
+</head>
+<body>
+	<div id="main">
+		
+	</div>
+	<div class="main-text">
+		<p>414</p>
+	    <p>hobbies</p>
+		哦，原来是这样的
+	</div>
+	<script src="../js/echarts-2.2.7/build/dist/echarts.js" ></script>
+	<script type="text/javascript">
+        require.config({
+            paths: {
+                echarts: '../js/echarts-2.2.7/build/dist'
+            }
+        });
+        require(
+        [
+            'echarts',
+            'echarts/chart/pie'
+        ],
+        function (ec) {
+            //--- 折柱 ---
+            var myChart = ec.init(document.getElementById('main'));
+            myChart.setOption({
+            	backgroundColor : '#f5f5f5',
+                title : {
+		        text: '',
+		        subtext: '',
+		        x:'right',
+		        y:'bottom'
+		    },
+		    tooltip : {
+		        trigger: 'item',
+		        //formatter: "{a} <br/>{b} : {c} ({d}%)"
+		        formatter: "({d}%)"
+		    },
+		    legend: {
+		        orient : 'vertical',
+		        x : 'left',
+		        data:['运动','娱乐','文艺','宅','吃货',
+		        '旅游','摄影','烹饪','数码','逛街',
+		        '养生','奇葩']
+		    },
+		    //toolbox: {
+		     //   show : true,
+		       // feature : {
+		         //   mark : {show: true},
+		           // dataView : {show: true, readOnly: false},
+		           // restore : {show: true},
+		           // saveAsImage : {show: true}
+		        //}
+		    //},
+		    calculable : false,
+		    series : (function (){
+		        var series = [];
+		        for (var i = 0; i < 30; i++) {
+		            series.push({
+		                name:'414 爱好分布',
+		                type:'pie',
+		                itemStyle : {normal : {
+		                    label : {show : i > 28},
+		                    labelLine : {show : i > 28, length:20}
+		                }},
+		                radius : [i * 4 + 40, i * 4 + 43],
+		                data:[
+		                    {value: i * 60,  name:'运动'},
+		                    {value: i * 48,  name:'娱乐'},
+		                    {value: i * 19,  name:'文艺'},
+		                    {value: i * 6,  name:'宅'},
+		                    {value: i * 4, name:'吃货'},
+
+		                    {value: i * 17,  name:'旅游'},
+		                    {value: i * 4,  name:'摄影'},
+		                    {value: i * 3,  name:'烹饪'},
+		                    {value: i * 3,  name:'数码'},
+		                    {value: i * 3, name:'逛街'},
+
+		                    {value: i * 5,  name:'养生'},
+		                    {value: i * 25,  name:'奇葩'}
+		                ]
+		            })
+		        }
+		        series[0].markPoint = {
+		            symbol:'emptyCircle',
+		            symbolSize:series[0].radius[0],
+		            effect:{show:true,scaleSize:12,color:'rgba(250,225,50,0.8)',shadowBlur:10,period:30},
+		            data:[{x:'50%',y:'50%'}]
+		        };
+		        return series;
+		    })()
+		});
+
+		setTimeout(function (){
+		    var _ZR = myChart.getZrender();
+		    var TextShape = require('zrender/shape/Text');
+		    // 补充千层饼
+		    _ZR.addShape(new TextShape({
+		        style : {
+		            x : _ZR.getWidth() / 2,
+		            y : _ZR.getHeight() / 2,
+		            color: '#666',
+		            text : 'Hobbies',
+		            textAlign : 'center'
+		        }
+		    }));
+		    _ZR.addShape(new TextShape({
+		        style : {
+		            x : _ZR.getWidth() / 2 - 150,
+		            y : _ZR.getHeight() - 100,
+		            //x :  200,
+		            //y :  50,
+		            brushType:'fill',
+		            color: '#646464'
+		            //text : '414'
+		        }
+		    }));
+		    _ZR.refresh();
+		}, 2000);		    
+        });
+    </script>
+</body>
+</html>

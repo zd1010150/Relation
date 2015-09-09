@@ -1,0 +1,72 @@
+.link {
+  stroke: #666;
+}
+
+.link.dotted {
+    stroke: #ccc;
+    stroke-dasharray: 5 5;
+    /*box-shadow: 0 0 5px rgba(81, 203, 238, 1);*/
+}
+
+.link.involed {
+    stroke: red;
+}
+.event-line {
+<<<<<<< HEAD
+    stroke-width: 5;
+
+=======
+    stroke: transparent;
+    stroke-width: 15;
+>>>>>>> 248e613008b0b7df1b7ef9aca118eec4511a0ff9
+}
+
+.node text {
+  pointer-events: none;
+  font: 10px sans-serif;
+}
+.node.primary circle{
+    stroke: red;
+}
+.node.involed circle{
+    stroke: orange;
+}
+.node.involed text{
+    stroke: orange;
+}
+.node.group-male {
+    stroke: rgb(3,210,255);
+}
+
+.node.group-female {
+    stroke: rgb(250,43,111);
+}
+
+
+.hidden {
+    display: none;
+}
+
+.node-tip {
+    line-height: 1;
+    font-weight: bold;
+    padding: 12px;
+    background: #b6f1f8;
+    color: #e0d7d7;
+    border-radius: 2px;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.node-tip:after {
+    display: inline;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-sizing: border-box;
+    font-size: 10px;
+    width: 100%;
+    line-height: 1;
+    color: rgba(0, 0, 0, 0.8);
+    content: "\25BC";
+    text-align: center;
+}
