@@ -34,16 +34,18 @@ h1,h2,h3,h4,h5,h6,p,label{
 	margin:0;
 }
 .header{
-	background: url(../images/banner1.png) no-repeat bottom;
+	/*-- background: url(../images/hi.jpg) no-repeat bottom; --*/
 	width:100%;
 	min-height: 870px;
 	display: block;
 	background-size: cover;
+	background-color: #F5F5F5;
 }
 .header-top{
-	background: url(../images/banner1.png) no-repeat center;
+	/*-- background: url(../images/hi.jpg) no-repeat center; --*/
 	min-height: 155px;
 	background-size: cover;
+	background-color: #F5F5F5;
 }
 .header-logo{
 	display:none;
