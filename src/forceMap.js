@@ -41,7 +41,22 @@ function ForceMap(options) {
         .charge(-150)
         .size([width, height])
         .start();
+    force.drag()
+        .on("dragstart", function (d) {
+            d.fixed = true;
+        });
+
+
+    var linkTip = d3.tip()
+        .attr('class', 'link-tip')
+        .offset([10, -10])
+        .html(function (d) {
+            return '<strong>' + d.name + '</strong>';
+        });
+    var linkTipTimer;
+    svg.call(linkTip);
     // paint links first so that put link under the node, link will not trigger mouse event
+    
     var links = svg.selectAll('.link')
         .data(linksData)
         .enter()
@@ -53,27 +68,64 @@ function ForceMap(options) {
             }
             return classNames.join(' ');
         })
-        // .append('text')
-        // .text(function (d) {
-        //     return d.name;
-        // });
+        .on('mouseover', function (d) {
+            d3.select(this).classed('involed', true);
+            if (linkTipTimer) {
+                clearTimeout(linkTipTimer);
+            }
+            linkTip.show(d);
+        })
+        .on('mouseout', function (d) {
+            d3.select(this).classed('involed', false);
+            if (linkTipTimer) {
+                clearTimeout(linkTipTimer);
+            }
+            linkTipTimer = setTimeout(function () {
+                linkTip.hide(d);
+            }, 300);
+        });
 
+// --------------------------------
+
+    var nodeTip = d3.tip()
+        .attr('class', 'node-tip')
+        .offset([-10, 0])
+        .html(function (d) {
+            return "<span style='color:red'>" + d.name + "</span>";
+        });
+    var nodeTipTimer;
+    svg.call(nodeTip);
     var nodes = svg.selectAll('.node')
         .data(nodesData)
         .enter()
         .append('g')
         .attr('class', function (d) {
             var classNames = ['node'];
+            if (d.group) {
+                classNames.push('group-' + d.group);
+            }
             return classNames.join(' ');
         })
         .call(force.drag)
         .on('mouseover', function (d) {
+            d3.select(this).classed('primary', true);
             hightlightLinked(d.id);
+            if (nodeTipTimer) {
+                clearTimeout(nodeTipTimer);
+            }
+            nodeTip.show(d);
         })
         .on('mouseout', function (d) {
             clearHighligt();
+            d3.select(this).classed('primary', false);
+            if (nodeTipTimer) {
+                clearTimeout(nodeTipTimer);
+            }
+            nodeTipTimer = setTimeout(function () {
+                nodeTip.hide(d);
+            }, 300);
         });
-    // 插入 pattern
+    // 插入 pattern 用于节点绘制圆形
     var defs = svg.append('svg:defs')
         .selectAll('.pattern')
         .data(nodesData)
@@ -155,19 +207,23 @@ function ForceMap(options) {
     function render () {
         svg.selectAll('.node')
             .attr('class', function(d) {
-                var classNames = ['node'];
+                var classNames = this.classList;
                 if (d.involed) {
-                    classNames.push('involed');
+                    this.classList.add('involed');
+                } else {
+                    this.classList.remove('involed');
                 }
-                return classNames.join(' ');
+                return this.classList;
             });
         svg.selectAll('.link')
             .attr('class', function(d) {
-                var classNames = ['link', 'dotted'];
+                var classNames = this.classList;
                 if (d.involed) {
-                    classNames.push('involed');
+                    this.classList.add('involed');
+                } else {
+                    this.classList.remove('involed');
                 }
-                return classNames.join(' ');
+                return this.classList;
             });
     }
 
