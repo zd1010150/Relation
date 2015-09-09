@@ -16,5 +16,24 @@
 <div id="pic-6" class='small-pic'></div>
 <div id="pic-7" class='small-pic'></div>
 </div>
+<script>
+    var links,nodes;
+    function callbackLinks(data){
+        links=data.data;
+
+    }
+    function callbackNodes(data){
+        nodes=data.data;
+
+    }
+
+
+
+    </script>
+    <script type="text/javascript" src="http://10.19.199.110:2100/asyn/findAllRelationInfos.vm?callback=callbackLinks"></script>
+    <script type="text/javascript" src="http://10.19.199.110:2100/asyn/findAllNodeInfos.vm?callback=callbackNodes"></script>
+
+
+</script>
 </body>
 </html>

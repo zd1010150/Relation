@@ -2,7 +2,7 @@
 
 function ForceMap(options) {
     var container = options.container || document.body,
-    width = options.width || 960,
+    width = options.width || 1400,
     height = options.height || 600;
     var nodesData = options.nodes; // distinguish between data and svn dom node
     var linksData = options.links;
@@ -37,7 +37,7 @@ function ForceMap(options) {
         .nodes(nodesData)
         .links(linksData)
         .linkDistance(function (d) { // 节点之间的距离，默认为130。距离的权重越大，距离越小，d.weight值约定在[0-100]
-            return 130 - (~~d.weight);
+            return 300 - (~~d.weight);
         })
         .charge(-150)
         .size([width, height])
@@ -50,7 +50,7 @@ function ForceMap(options) {
 
     var linkTip = d3.tip()
         .attr('class', 'link-tip')
-        .offset([10, -10])
+        .offset([10, 10])
         .html(function (d) {
             return '<strong>' + d.name + '</strong>';
         });
@@ -102,8 +102,9 @@ function ForceMap(options) {
         .append('g')
         .attr('class', function (d) {
             var classNames = ['node'];
-            if (d.group) {
-                classNames.push('group-' + d.group);
+            if (d.category) {
+                var tempt= d.category=='男'?'male':'female';
+                classNames.push('group-' +tempt);
             }
             return classNames.join(' ');
         })
@@ -139,7 +140,8 @@ function ForceMap(options) {
         .attr('height', '40')
         .append('svg:image')
         .attr('xlink:href', function (d) {
-            return d.avatarUrl;
+            return "http://10.19.199.110:2100"+d.symbol;
+            //return "";
         })
         .attr('x', 0)
         .attr('y', 0)
@@ -148,7 +150,8 @@ function ForceMap(options) {
 
     nodes.append("circle")
         .attr("xlink:href", function (d) {
-            return d.avatarUrl;
+            return "http://10.19.199.110:2100"+d.symbol;
+            //return "";
         })
         .attr("x", 0)
         .attr("y", 0)

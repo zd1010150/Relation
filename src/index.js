@@ -8,38 +8,38 @@
 var nodes = [{
     id: '103313',
     name: '藤椒',
-    group: 1
+    category: '男'
     // avatarUrl: 'https://github.com/favicon.ico'
 }, {
     id: '103067',
     name: '花椒',
-    group: 2
+    category: '男'
     // avatarUrl: 'https://github.com/favicon.ico'
 }, {
     id: '103568',
     name: '八角',
-    group: 3
+    category: '女'
     // avatarUrl: 'https://github.com/favicon.ico'
 }, {
     id: '103569',
     name: '茴香',
-    group: 4
+    category: '女'
     // avatarUrl: 'https://github.com/favicon.ico'
 }, {
     id: '77164',
     name: '大料',
-    group: 2
+    category: '女'
     // avatarUrl: 'https://github.com/favicon.ico'
 }, {
     id: '103854',
     name: '胡椒',
-    group: 3
+    category: '男'
     // avatarUrl: 'https://github.com/favicon.ico'
 }];
 
 nodes.forEach(function (item) {
     if (item.id) {
-        item.avatarUrl = 'https://work.alibaba-inc.com/photo/' + item.id + '.120x120.jpg';
+        item.symbol = 'https://work.alibaba-inc.com/photo/' + item.id + '.120x120.jpg';
     }
 });
 

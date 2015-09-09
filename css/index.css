@@ -13,7 +13,7 @@
 }
 .event-line {
     stroke-width: 5;
-    
+
 }
 
 .node text {
@@ -29,18 +29,14 @@
 .node.involed text{
     stroke: orange;
 }
-.node.group-1 {
+.node.group-male {
     stroke: rgb(3,210,255);
 }
-.node.group-2 {
-    stroke: rgb(167,22,255);
-}
-.node.group-3 {
+
+.node.group-female {
     stroke: rgb(250,43,111);
 }
-.node.group-4 {
-    stroke: rgb(255,220,6);
-}
+
 
 .hidden {
     display: none;
@@ -50,8 +46,8 @@
     line-height: 1;
     font-weight: bold;
     padding: 12px;
-    background: rgba(0, 0, 0, 0.8);
-    color: #fff;
+    background: #b6f1f8;
+    color: #e0d7d7;
     border-radius: 2px;
 }
 
