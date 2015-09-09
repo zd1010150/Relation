@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>百年阿里414</title>
+    <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+
+<div id="doc">
+<div id="pic-1" class='small-pic'></div>
+<div id="pic-2" class='small-pic'></div>
+<div id="pic-3" class='small-pic'></div>
+<div id="pic-4" class='small-pic'></div>
+<div id="pic-5" class='small-pic'></div>
+<div id="pic-6" class='small-pic'></div>
+<div id="pic-7" class='small-pic'></div>
+</div>
+<script>
+    var links,nodes;
+    function callbackLinks(data){
+        links=data.data;
+
+    }
+    function callbackNodes(data){
+        nodes=data.data;
+
+    }
+
+
+
+    </script>
+    <script type="text/javascript" src="http://10.19.199.110:2100/asyn/findAllRelationInfos.vm?callback=callbackLinks"></script>
+    <script type="text/javascript" src="http://10.19.199.110:2100/asyn/findAllNodeInfos.vm?callback=callbackNodes"></script>
+
+
+</script>
+</body>
+</html>

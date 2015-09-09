@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>d3关系图</title>
+  <link rel="stylesheet" href="/css/index.css">
+  <script src="/bower_components/d3/d3.js"></script>
+ <script src="/bower_components/d3-tip/index.js"></script>
+ <script>
+function preloadimages(arr){
+    var newimages=[]
+    var arr=(typeof arr!="object")? [arr] : arr  //确保参数总是数组
+    for (var i=0; i<arr.length; i++){
+        newimages[i]=new Image()
+        newimages[i].src=img-server+arr[i]
+    }
+}
+var img-server="http://10.19.199.110:2100";
+preloadimages(["/resources/BaiA/101105.jpg","/resources/BaiA/102585.jpg","/resources/BaiA/103313.jpg","/resources/BaiA/103316.jpg","/resources/BaiA/104764.jpg","/resources/BaiA/64904.jpg","/resources/BaiA/67721.jpg","/resources/BaiA/76124.jpg","/resources/BaiA/76234.jpg","/resources/BaiA/76643.jpg","/resources/BaiA/77247.jpg","/resources/BaiA/77643.jpg","/resources/BaiA/78654.jpg","/resources/BaiA/78806.jpg","/resources/BaiA/79115.jpg","/resources/BaiA/82723.jpg","/resources/BaiA/83355.jpg","/resources/BaiA/8
+3537.jpg","/resources/BaiA/83645.jpg","/resources/BaiA/83728.jpg","/resources/BaiA/84037.jpg","/resources/BaiA/84038.jpg","/resources/BaiA/84183.jpg","/resources/BaiA/84185.jpg","/resources/BaiA/84356.jpg","/resources/BaiA/84735.jpg","/resources/BaiA/84859.jpg","/resources/BaiA/84898.jpg","/resources/BaiA/84979.jpg","/resources/BaiA/85149.jpg","/resources/BaiA/85169.jpg","/resources/BaiA/85179.jpg","/resources/BaiA/85725.jpg","/resources/BaiA/85964.jpg","/resources/BaiA/85996.jpg","/resources/Ba
+iA/86014.jpg","/resources/BaiA/86097.jpg","/resources/BaiA/86282.jpg","/resources/BaiA/86348.jpg","/resources/BaiA/86686.jpg","/resources/BaiA/87385.jpg","/resources/BaiA/87432.jpg","/resources/BaiA/87467.jpg","/resources/BaiA/88497.jpg","/resources/BaiA/88791.jpg"]);
+ </script>
+</head>
+<body>
+</body>
+<script>
+     var links,nodes;
+    function callbackLinks(data){
+        links=data.data;
+
+    }
+    function callbackNodes(data){
+        nodes=data.data;
+
+     }
+
+
+
+    </script>
+    <script type="text/javascript" src="http://10.19.199.110:2100/asyn/findAllRelationInfos.vm?callback=callbackLinks"></script>
+    <script type="text/javascript" src="http://10.19.199.110:2100/asyn/findAllNodeInfos.vm?callback=callbackNodes"></script>
+</script>
+<script src="/src/forceMap.js"></script>
+<!--<script src="/src/index.js"></script>-->
+
+<script >
+
+    var options = {
+    nodes: nodes,
+    links: links,
+};
+
+ForceMap(options);
+</script>
+
+</html>
