@@ -36,8 +36,9 @@ function ForceMap(options) {
     var force = d3.layout.force()
         .nodes(nodesData)
         .links(linksData)
-        // .gravity(0.05)
-        .linkDistance(120)
+        .linkDistance(function (d) { // 节点之间的距离，默认为130。距离的权重越大，距离越小，d.weight值约定在[0-100]
+            return 130 - (~~d.weight);
+        })
         .charge(-150)
         .size([width, height])
         .start();
@@ -56,7 +57,7 @@ function ForceMap(options) {
     var linkTipTimer;
     svg.call(linkTip);
     // paint links first so that put link under the node, link will not trigger mouse event
-    
+
     var links = svg.selectAll('.link')
         .data(linksData)
         .enter()
