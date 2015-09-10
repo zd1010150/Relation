@@ -56,7 +56,11 @@ function ForceMap(options) {
 
     var linkTip = d3.tip()
         .attr('class', 'link-tip')
-        .offset([10, -10])
+        .offset(function (d) {
+            console.log('s-py:' + d.source.py , 't-py:' + d.target.py, 's-px:' +d.source.px , 't-px' + d.target.px);
+            console.log('offset', Math.abs(d.source.py - d.target.py)/2, Math.abs(d.source.px - d.target.px)/2);
+            return [Math.abs(d.source.py - d.target.py)/2, Math.abs(d.source.px - d.target.px)/2]
+        })
         .html(function (d) {
             return '<strong>' + d.name + '</strong>';
         });
@@ -142,11 +146,23 @@ function ForceMap(options) {
         .attr("r", CircleRadius)
         .attr('fill', 'white');
 
-    svg.append('svg:defs')
+    var defsg = svg.append('svg:defs')
         .selectAll('.pattern')
         .data(nodesData)
         .enter()
-        .append('image')
+        .append('g')
+        .attr('id', function (d){
+            return 'pattern_' + d.id;
+        })
+
+        defsg.append('circle')
+        .attr("cx", CircleRadius)
+        .attr("cy", CircleRadius)
+        .attr("r", CircleRadius)
+        .attr("stroke-width", 2)
+        .attr('fill', 'transparent');
+
+        defsg.append('image')
         .attr('id', function (d){
             return 'pattern_' + d.id;
         })
@@ -158,6 +174,8 @@ function ForceMap(options) {
         })
         .attr('width', CircleRadius * 2)
         .attr('height', CircleRadius * 2);
+
+
 
         nodes.append('use')
             .attr("xlink:href", function (d) {
