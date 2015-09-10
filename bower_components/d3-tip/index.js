@@ -58,6 +58,8 @@
 
       while(i--) nodel.classed(directions[i], false)
       coords = direction_callbacks.get(dir).apply(this)
+      console.log('coords', coords);
+      console.log('poffset', poffset);
       nodel.classed(dir, true).style({
         top: (coords.top +  poffset[0]) + scrollTop + 'px',
         left: (coords.left + poffset[1]) + scrollLeft + 'px'

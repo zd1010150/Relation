@@ -23,12 +23,12 @@
 
 .node text {
   pointer-events: none;
-  font: 10px sans-serif;
+  font: 12px sans-serif;
 }
 .node.primary circle{
     stroke: red;
 }
-.node.involed circle{
+.node.involed use{
     stroke: orange;
 }
 .node.involed text{
@@ -47,7 +47,7 @@
     display: none;
 }
 
-.node-tip {
+.link-tip, .node-tip {
     line-height: 1;
     font-weight: bold;
     padding: 12px;
@@ -57,7 +57,7 @@
 }
 
 /* Creates a small triangle extender for the tooltip */
-.node-tip:after {
+.link-tip:after, .node-tip:after {
     display: inline;
     position: absolute;
     top: 100%;
