@@ -156,7 +156,7 @@ function ForceMap(options) {
         .attr('height', '40')
         .append('svg:image')
         .attr('xlink:href', function (d) {
-            return "http://10.19.199.110:2100"+d.symbol;
+            return "http://10.18.218.115:2100"+d.symbol;
             //return "";
         })
         .attr('x', 0)

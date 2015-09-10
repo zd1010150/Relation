@@ -1,5 +1,5 @@
 
-    
+
 
 require.config({
     paths: {
@@ -79,6 +79,7 @@ require(['echarts', 'echarts/chart/force'], function(ec) {
             minRadius: 15,
             maxRadius: 25,
             gravity: 1.1,
+
             scaling: 1.2,
             draggable: false,
             linkSymbol: 'arrow',
