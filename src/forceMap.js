@@ -61,9 +61,7 @@ function ForceMap(options) {
     var linkTip = d3.tip()
         .attr('class', 'link-tip')
         .offset(function (d) {
-            console.log('s-py:' + d.source.py , 't-py:' + d.target.py, 's-px:' +d.source.px , 't-px' + d.target.px);
-            console.log('offset', Math.abs(d.source.py - d.target.py)/2, Math.abs(d.source.px - d.target.px)/2);
-            return [Math.abs(d.source.py - d.target.py)/2, Math.abs(d.source.px - d.target.px)/2]
+            return [Math.abs(d.source.py - d.target.py)/2, 0];
         })
         .html(function (d) {
             return '<strong>' + d.name + '</strong>';
