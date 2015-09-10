@@ -183,33 +183,10 @@ function ForceMap(options) {
         .attr('width', CircleRadius * 2)
         .attr('height', CircleRadius * 2);
 
-        // <<<<<<< HEAD
-        //         .attr('x', 0)
-        //         .attr('y', 0)
-        //         .attr('width', 40)
-        //         .attr('height', 40);
-        //
-        //     nodes.append("circle")
-        //         .attr("xlink:href", function (d) {
-        //             return "http://10.19.199.110:2100"+d.symbol;
-        //             //return "";
-        // =======
-
-
         nodes.append('use')
             .attr("xlink:href", function (d) {
                 return '#pattern_' + d.id;
             });
-    // nodes.append("circle")
-    //     .attr("xlink:href", function (d) {
-    //         return d.avatarUrl;
-    //     })
-    //     .attr("x", 0)
-    //     .attr("y", 0)
-    //     .attr("r", CircleRadius)
-    //     .style("fill", function (d) {
-    //         return 'url(#' + 'pattern_' + d.id + ')';
-    //     });
 
     nodes.append('text')
         .attr('x', '1em')
