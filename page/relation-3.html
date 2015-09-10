@@ -53,9 +53,11 @@
 
      function  jsonp(url){
       var href=window.location.href;
-      if(/id=(\d)*/.test(href)){
-        id=/id=(\d)*/.exec(href)[1];
-      }else{
+      console.log(href);
+      var reg = new RegExp("(^|&|\\?)id=([^&]*)(&|$)"), r;
+  if (r=href.match(reg))
+  id=unescape(r[2]);
+      else{
         id="";
       }
 

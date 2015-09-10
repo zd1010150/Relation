@@ -113,7 +113,7 @@ function ForceMap(options) {
         .attr('class', 'node-tip')
         .offset([-10, 0])
         .html(function (d) {
-            return "<span style='color:red'>" + d.name + "</span>";
+            return "<span style='color:#fff'>" + d.name + "</span>";
         });
     svg.call(nodeTip);
     var nodes = svg.selectAll('.node')
