@@ -46,6 +46,11 @@ function ForceMap(options) {
     force.drag()
         .on("dragstart", function (d) {
             d.fixed = true;
+            nodeTip.hide();
+            nodeTip.isDraging = true;
+        })
+        .on('dragend', function (d) {
+            nodeTip.isDraging = false;
         });
 
 
@@ -96,7 +101,7 @@ function ForceMap(options) {
             }, 300);
         });
 
-// --------------------------------
+// ---------------Node-----------------
 
     var nodeTip = d3.tip()
         .attr('class', 'node-tip')
@@ -104,7 +109,6 @@ function ForceMap(options) {
         .html(function (d) {
             return "<span style='color:red'>" + d.name + "</span>";
         });
-    var nodeTipTimer;
     svg.call(nodeTip);
     var nodes = svg.selectAll('.node')
         .data(nodesData)
@@ -121,38 +125,28 @@ function ForceMap(options) {
         .on('mouseover', function (d) {
             d3.select(this).classed('primary', true);
             hightlightLinked(d.id);
-            if (nodeTipTimer) {
-                clearTimeout(nodeTipTimer);
-            }
-            nodeTip.show(d);
+            !nodeTip.isDraging && nodeTip.show(d);
         })
         .on('mouseout', function (d) {
             clearHighligt();
             d3.select(this).classed('primary', false);
-            if (nodeTipTimer) {
-                clearTimeout(nodeTipTimer);
-            }
-            nodeTipTimer = setTimeout(function () {
-                nodeTip.hide(d);
-            }, 300);
+            nodeTip.hide(d);
         });
 
     // 移除性能低下的pattern 改用mask绘制圆形
-    var defs = svg.append('svg:defs')
-        .selectAll('.pattern')
-        .data(nodesData)
-        .enter();
-
-    defs.append('mask')
-        .attr('id', function (d) {
-            return 'mask_' + d.id;
-        })
+    svg.append('mask')
+        .attr('id','circleMask')
         .append('circle')
         .attr("cx", CircleRadius)
         .attr("cy", CircleRadius)
         .attr("r", CircleRadius)
         .attr('fill', 'white');
-    defs.append('image')
+
+    svg.append('svg:defs')
+        .selectAll('.pattern')
+        .data(nodesData)
+        .enter()
+        .append('image')
         .attr('id', function (d){
             return 'pattern_' + d.id;
         })
@@ -160,7 +154,7 @@ function ForceMap(options) {
             return d.avatarUrl;
         })
         .attr('mask', function (d) {
-            return 'url(#mask_' + d.id + ')';
+            return 'url(#circleMask)';
         })
         .attr('width', CircleRadius * 2)
         .attr('height', CircleRadius * 2);
