@@ -1,6 +1,7 @@
 'use strict';
 
 function ForceMap(options) {
+    var CircleRadius = 25;
     var container = options.container || document.body,
     width = options.width || 960,
     height = options.height || 600;
@@ -39,7 +40,7 @@ function ForceMap(options) {
         .linkDistance(function (d) { // 节点之间的距离，默认为130。距离的权重越大，距离越小，d.weight值约定在[0-100]
             return 130 - (~~d.weight);
         })
-        .charge(-150) // 节点之间排斥（负数）力度
+        .charge(-200) // 节点之间排斥（负数）力度
         .size([width, height])
         .start();
     force.drag()
@@ -135,40 +136,53 @@ function ForceMap(options) {
                 nodeTip.hide(d);
             }, 300);
         });
-    // 插入 pattern 用于节点绘制圆形
+
+    // 移除性能低下的pattern 改用mask绘制圆形
     var defs = svg.append('svg:defs')
         .selectAll('.pattern')
         .data(nodesData)
-        .enter()
-        .append('svg:pattern')
+        .enter();
+
+    defs.append('mask')
         .attr('id', function (d) {
+            return 'mask_' + d.id;
+        })
+        .append('circle')
+        .attr("cx", CircleRadius)
+        .attr("cy", CircleRadius)
+        .attr("r", CircleRadius)
+        .attr('fill', 'white');
+    defs.append('image')
+        .attr('id', function (d){
             return 'pattern_' + d.id;
         })
-        .attr('width', '40')
-        .attr('height', '40')
-        .append('svg:image')
         .attr('xlink:href', function (d) {
             return d.avatarUrl;
         })
-        .attr('x', 0)
-        .attr('y', 0)
-        .attr('width', 40)
-        .attr('height', 40);
-
-    nodes.append("circle")
-        .attr("xlink:href", function (d) {
-            return d.avatarUrl;
+        .attr('mask', function (d) {
+            return 'url(#mask_' + d.id + ')';
         })
-        .attr("x", 0)
-        .attr("y", 0)
-        .attr("r", 20)
-        .style("fill", function (d) {
-            return 'url(#' + 'pattern_' + d.id + ')';
-        });
+        .attr('width', CircleRadius * 2)
+        .attr('height', CircleRadius * 2);
+
+        nodes.append('use')
+            .attr("xlink:href", function (d) {
+                return '#pattern_' + d.id;
+            });
+    // nodes.append("circle")
+    //     .attr("xlink:href", function (d) {
+    //         return d.avatarUrl;
+    //     })
+    //     .attr("x", 0)
+    //     .attr("y", 0)
+    //     .attr("r", CircleRadius)
+    //     .style("fill", function (d) {
+    //         return 'url(#' + 'pattern_' + d.id + ')';
+    //     });
 
     nodes.append('text')
-        .attr('dx', '-1em')
-        .attr('y', '3em')
+        .attr('x', '1em')
+        .attr('y', '5em')
         .text(function(d) {
             return d.name;
         });
@@ -178,7 +192,7 @@ function ForceMap(options) {
         setLinePosition(eventlinks);
 
         nodes.attr("transform", function(d) {
-            return "translate(" + d.x + "," + d.y + ")";
+            return "translate(" + (d.x -CircleRadius) + "," + (d.y -CircleRadius)+ ")";
         });
     });
     /**
@@ -235,8 +249,8 @@ function ForceMap(options) {
                 return this.classList;
             });
         }
-        renderEle(svg.selectAll('.node'));
-        renderEle(svg.selectAll('.link'));
+        renderEle(nodes);
+        renderEle(links);
 
     }
 
