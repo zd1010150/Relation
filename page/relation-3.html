@@ -2,79 +2,115 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>d3关系图</title>
+  <title>百年阿里414</title>
   <link rel="stylesheet" href="/css/index.css">
   <script src="/bower_components/d3/d3.js"></script>
  <script src="/bower_components/d3-tip/index.js"></script>
 
+<link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/jquery.min.js"></script>
+<!-- Custom Theme files -->
+<!--theme-style-->
+<link href="../css/style.css" rel="stylesheet" type="text/css" media="all" />
+
+<link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+<script src="../js/jquery.min.js"></script>
+<script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+
+
+<!--//theme-style-->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Decoline Responsive web template, Bootstrap Web Templates, Flat Web Templates, Andriod Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!--flexslider-->
+<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+<!--//flexslider-->
+<link rel="stylesheet" type="text/css" href="css/third.css">
+
 
 </head>
-<body>
+<body style="background-color:#f5f5f5">
+  <div class="header">
+  <div class="container">
+    <!---->
+      <div class="header-logo">
+        <div class="logo">
+        <a href="index.html"><img src="images/logo.png" alt="" ></a>
+        </div>
+        <div class="top-nav">
+          <span class="icon"><img src="images/menu.png" alt=""> </span>
+          <ul>
+            <li ><a href="about.html" >first  </a> </li>
+            <li><a href="typo.html"  >second</a></li>
+            <li><a href="page/relation-3.html" >fourth </a></li>
+            <li><a href="contact.html" >fifth </a></li>
+          </ul>
+          <!--script-->
+        <script>
+          $("span.icon").click(function(){
+            $(".top-nav ul").slideToggle(500, function(){
+            });
+          });
+      </script>
+    </div>
+    <div class="clearfix"> </div>
+      </div>
+      <!---->
+        <div class="top-menu">
+          <ul>
+            <li ><a href="../about.html" data-hover="first">first  </a> </li>
+            <li><a href="/page/relation-0.html" data-hover="second" >second</a></li>
+            <li><a href="../index.html">third</a></li>
+            <li><a href="/page/relation-3.html" data-hover="fourth">fourth </a></li>
+            <li><a href="/page/relation-3.html" data-hover="fifth">fifth </a></li>
+          </ul>
+
+        </div>
+
+</div>
+<div id="svg"></div>
 </body>
 
 
 
 <script>
+var URL="http://52.26.13.156:8080";
      var links,nodes,id;
-     var temp=2;
+
     function callbackLinks(data){
 
         links=data.data;
-        if(temp==2){
-          temp--;
-        }
-        else if(temp==1){
-          forcemap();
-        }
 
 
     }
     function callbackNodes(data){
         nodes=data.data;
 
-        if(temp==2){
-          temp--;
-        }
-        else if(temp==1){
-          forcemap();
-        }
-
-     }
-     function displayperson(){
-
-     }
-   (function(){
-
-
-
-
-
-   });
-
-     function  jsonp(url){
-      var href=window.location.href;
-      console.log(href);
-      var reg = new RegExp("(^|&|\\?)id=([^&]*)(&|$)"), r;
-  if (r=href.match(reg))
-  id=unescape(r[2]);
-      else{
-        id="";
-      }
-
-      console.log(id);
-      var script = document.createElement("script");
-        script.type = "text/javascript";
-        var src =  url+"&id="+id;
-        script.src = src;
-        document.body.appendChild(script);
-
      }
 
 
-     jsonp('http://10.18.218.115:2100/asyn/findRelationInfoById.vm?callback=callbackLinks');
 
-      jsonp('http://10.18.218.115:2100/asyn/findNodeInfoByIdWithRelated.vm?callback=callbackNodes');
 
+
+  $.when($.ajax({
+        url:URL+'/asyn/findRelationInfoById.vm',
+        dataType:'jsonp',
+        data:'',
+        jsonp:'callbackLinks',
+        timeout:3000
+    }),
+       $.ajax({
+        url:URL+'/asyn/findNodeInfoByIdWithRelated.vm',
+        dataType:'jsonp',
+        data:'',
+        jsonp:'callbackNodes',
+        timeout:3000
+    })
+       ).done(forcemap).fail(console.log("failed"));
 
     </script>
 <script src="/src/forceMap.js"></script>

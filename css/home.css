@@ -85,8 +85,8 @@ to{-o-transform:rotate(360deg)}
 }
 .small-pic{
     position: absolute;
-    animation: 1.5s linear 0s normal none infinite rotate;
--webkit-animation:1.5s linear 0s normal none infinite rotate;
+    animation: 7s linear 0s normal none infinite rotate;
+-webkit-animation:7s linear 0s normal none infinite rotate;
 }
 .small-pic:hover {
 -webkit-transform: rotateZ(360deg);

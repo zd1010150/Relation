@@ -1,4 +1,4 @@
-/*--A Design by W3layouts 
+/*--A Design by W3layouts
 Author: W3layout
 Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
@@ -13,10 +13,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     src:url(../fonts/PontanoSans-Regular.ttf) format('truetype');
 }
 body{
-	
+
 	font-family: 'PontanoSans-Regular';
 	background:#fff;
-	
+
 }
 body a{
 	transition: 0.5s all;
@@ -28,20 +28,22 @@ body a{
  ul{
 	padding: 0;
 	margin: 0;
-	
+
 }
 h1,h2,h3,h4,h5,h6,p,label{
 	margin:0;
 }
 .header{
-	background: url(../images/hiback.jpg) no-repeat bottom;
+
 	width:100%;
 	min-height: 870px;
 	display: block;
 	background-size: cover;
+    background-color: #f5f5f5;
 }
 .header-top{
-	background: url(../images/hiback.jpg) no-repeat center;
+	background-color: #f5f5f5;
+
 	min-height: 155px;
 	background-size: cover;
 }
@@ -99,7 +101,7 @@ h1,h2,h3,h4,h5,h6,p,label{
 /*----*/
 .top-nav span.menu:before{
 	content: url(../images/menu.png)no-repeat 0px 0px;
-	cursor:pointer;	
+	cursor:pointer;
 	width:100%;
 }
 .top-nav span.menu{
@@ -186,7 +188,7 @@ h1,h2,h3,h4,h5,h6,p,label{
 	color: #939393;
   font-size: 1.1em;
   line-height: 1.7em;
-  
+
   margin: 0 0 0.6em;
 }
 .conent-top {
@@ -280,7 +282,7 @@ h1,h2,h3,h4,h5,h6,p,label{
   width: 100px;
   height: 100px;
   padding: 0.3em 0 0;
-  
+
 }
 .six h4 span{
 	display:block;
@@ -343,25 +345,25 @@ ul.social li i{
 	height:32px;
 	 margin: 0 5px 0 0;
 }
-ul.social li i.facebook{	
+ul.social li i.facebook{
 	background-position: -43px -32px ;
 }
-ul.social li i.linkedin{	
+ul.social li i.linkedin{
 	background-position: -84px -32px ;
 }
-ul.social li i.dribble{	
+ul.social li i.dribble{
 	background-position: -129px -32px ;
 }
 ul.social li i:hover{
 		background-position:-3px -73px
 }
-ul.social li i.facebook:hover{	
+ul.social li i.facebook:hover{
 	background-position: -43px -73px ;
 }
-ul.social li i.linkedin:hover{	
+ul.social li i.linkedin:hover{
 	background-position: -84px -73px ;
 }
-ul.social li i.dribble:hover{	
+ul.social li i.dribble:hover{
 	background-position: -129px -73px ;
 }
 .enter{
@@ -379,7 +381,7 @@ ul.social li i.dribble:hover{
 	width:89%;
 	border:none;
 	font-size:1.1em;
-	color:#fff;	
+	color:#fff;
 	background:none;
 }
 .footer-grid-top input[type="submit"] {
@@ -389,7 +391,7 @@ ul.social li i.dribble:hover{
 	width: 30px;
 	height: 21px;
 }
-.footer-grid-top p{	
+.footer-grid-top p{
 	font-size: 1.5em;
   	line-height: 1.5em;
 	color:#fff;
@@ -422,7 +424,7 @@ p.footer-class a:hover{
 
 .contact-top h1{
 	font-size: 3em;
-	color:#000;	
+	color:#000;
 	  font-family: 'HammersmithOne-Regular';
 	  margin: 0 15px;
 }
@@ -480,7 +482,7 @@ p.footer-class a:hover{
 .address1 p{
 	font-size:1.8em;
 	color: #939393;
-	line-height: 1.5em;	
+	line-height: 1.5em;
 }
 .address-more h4{
 	color:#000;
@@ -531,7 +533,7 @@ p.footer-class a:hover{
 	color:#000;
 }
 .sed-in ul li a :hover{
-	
+
 }
  ul.blog-ic li span i{
 	  font-size: 15px;
@@ -757,7 +759,7 @@ h4.media-heading{
 	left: 0px;
 }
 .accordation_menu input:checked + label,
-.accordation_menu input:checked + label:hover{ 
+.accordation_menu input:checked + label:hover{
 	border: 1px solid #E7e7e7;
 	color: #999;
 	  background: #F9FAFC;
@@ -831,10 +833,10 @@ ul.nav.nav-pills {
 /*--//typo--*/
 /*--responsive--*/
 @media(max-width:1336px){
-	
+
 }
 @media(max-width:1280px){
-	
+
 }
 @media(max-width:1024px){
 .header {
@@ -988,7 +990,7 @@ h1.grid2 {
 @media(max-width:640px){
 .banner-matter h3 {
   font-size: 2em;
-}	
+}
 .banner-matter {
   padding: 7em 0 0;
 }
@@ -1195,7 +1197,7 @@ ul.start {
 }
 /*--typo--*/
 .page-header h3 {
-  font-size: 2em; 
+  font-size: 2em;
 }
 button.btn.btn-lg {
   font-size: 1em;
@@ -1231,7 +1233,7 @@ h4.grid2 {
 @media(max-width:320px){
 .banner-matter h3 {
   font-size: 1.3em;
-}	
+}
 .hvr-rectangle-out {
   padding: 0.3em 0.7em;
 }
@@ -1360,9 +1362,9 @@ p.footer-class {
   width: 100%;
 }
 
-span.m_5 ,.accordation_menu label{ 
+span.m_5 ,.accordation_menu label{
   font-size: 11px;
-  
+
 }
 i#i2 ,i#i3,i#i4 ,span.m_5{
   padding: 0px 0px 0px 40px;

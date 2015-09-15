@@ -4,32 +4,32 @@
 })();
 
 var nodes = [{
-    id: '103313',
+    id: '1000155',
     name: '藤椒',
     category: '男'
     // avatarUrl: 'https://github.com/favicon.ico'
 }, {
-    id: '103067',
+    id: '1000255',
     name: '花椒',
     category: '男'
     // avatarUrl: 'https://github.com/favicon.ico'
 }, {
-    id: '103568',
+    id: '100028956',
     name: '八角',
     category: '女'
     // avatarUrl: 'https://github.com/favicon.ico'
 }, {
-    id: '103569',
+    id: '10002734',
     name: '茴香',
     category: '女'
     // avatarUrl: 'https://github.com/favicon.ico'
 }, {
-    id: '77164',
+    id: '10002323',
     name: '大料',
     category: '女'
     // avatarUrl: 'https://github.com/favicon.ico'
 }, {
-    id: '103854',
+    id: '100027809',
     name: '胡椒',
     category: '男'
     // avatarUrl: 'https://github.com/favicon.ico'
@@ -38,31 +38,31 @@ var nodes = [{
 
 nodes.forEach(function (item) {
     if (item.id) {
-        item.symbol = 'https://work.alibaba-inc.com/photo/' + item.id + '.120x120.jpg';
+        item.symbol =   item.id + '.120x120.jpg';
     }
 });
 
 var links = [{
-    source: '103313',
-    target: '103067',
+    source: '1100028956',
+    target: '100027809',
     name: '就不告诉你',
     weight: 100
 }, {
     source: '103313',
-    target: '103854',
+    target: '100028956',
     name: '就不告诉你',
     weight: 20
 }, {
-    source: '103067',
-    target: '103568',
+    source: '100027809',
+    target: '1000255',
     name: '就不告诉你'
 }, {
-    source: '103568',
-    target: '103569',
+    source: '1000255',
+    target: '1000155',
     name: '就不告诉你'
 }, {
-    source: '77164',
-    target: '103854',
+    source: '1000155',
+    target: '1000255',
     name: '就不告诉你'
 }];
 // var links =  [{"name":"阅读,电影,41","source":"1","target":"15","weight":"41"},{"name":"阅读,电影,37","source":"1","target":"16","weight":"37"},{"name":"阅读,旅行,31","source":"1","target":"20","weight":"31"},{"name":"阅读,旅行,30","source":"1","target":"27","weight":"30"},{"name":"唱歌,书法,31","source":"2","target":"28","weight":"31"},{"name":"睡觉,18","source":"2","target":"10","weight":"18"},{"name":"唱歌,17","source":"2","target":"3","weight":"17"},{"name":"睡觉,17","source":"2","target":"38","weight":"17"},{"name":"唱歌,吃,38","source":"3","target":"28","weight":"38"},{"name":"篮球,唱歌,35","source":"3","target":"27","weight":"35"},{"name":"篮球,29","source":"3","target":"13","weight":"29"},{"name":"篮球,28","source":"3","target":"31","weight":"28"},{"name":"游戏,漫画,31","source":"4","target":"26","weight":"31"},{"name":"骑行,游戏,28","source":"4","target":"8","weight":"28"},{"name":"骑行,游戏,28","source":"4","target":"25","weight":"28"},{"name":"游戏,17","source":"4","target":"24","weight":"17"},{"name":"电影,游戏,52","source":"5","target":"34","weight":"52"},{"name":"桌球,游戏,50","source":"5","target":"25","weight":"50"},{"name":"电影,游戏,43","source":"5","target":"26","weight":"43"},{"name":"桌球,28","source":"5","target":"40","weight":"28"},{"name":"逛街,电影,40","source":"6","target":"7","weight":"40"},{"name":"爬山,35","source":"6","target":"36","weight":"35"},{"name":"爬山,35","source":"6","target":"43","weight":"35"},{"name":"爬山,33","source":"6","target":"45","weight":"33"},{"name":"电影,逛街,40","source":"7","target":"6","weight":"40"},{"name":"电影,26","source":"7","target":"15","weight":"26"},{"name":"电影,22","source":"7","target":"26","weight":"22"},{"name":"电影,22","source":"7","target":"34","weight":"22"},{"name":"游戏,骑行,52","source":"8","target":"25","weight":"52"},{"name":"游戏,篮球,43","source":"8","target":"26","weight":"43"},{"name":"篮球,30","source":"8","target":"31","weight":"30"},{"name":"篮球,28","source":"8","target":"40","weight":"28"},{"name":"画画,25","source":"9","target":"10","weight":"25"},{"name":"画画,20","source":"9","target":"22","weight":"20"},{"name":"吃,睡觉,46","source":"10","target":"38","weight":"46"},{"name":"睡觉,28","source":"10","target":"45","weight":"28"},{"name":"睡觉,28","source":"10","target":"31","weight":"28"},{"name":"画画,25","source":"10","target":"9","weight":"25"},{"name":"旅游,22","source":"11","target":"43","weight":"22"},{"name":"旅游,22","source":"11","target":"32","weight":"22"},{"name":"旅游,22","source":"11","target":"41","weight":"22"},{"name":"旅游,20","source":"11","target":"17","weight":"20"},{"name":"阅读,数码,35","source":"12","target":"16","weight":"35"},{"name":"数码,28","source":"12","target":"42","weight":"28"},{"name":"游戏,27","source":"12","target":"5","weight":"27"},{"name":"游戏,27","source":"12","target":"34","weight":"27"},{"name":"音乐,足球,篮球,70","source":"13","target":"21","weight":"70"},{"name":"篮球,羽毛球,57","source":"13","target":"31","weight":"57"},{"name":"篮球,羽毛球,57","source":"13","target":"27","weight":"57"},{"name":"足球,羽毛球,50","source":"13","target":"24","weight":"50"},{"name":"旅游,阅读,28","source":"14","target":"15","weight":"28"},{"name":"旅游,阅读,27","source":"14","target":"17","weight":"27"},{"name":"阅读,25","source":"14","target":"27","weight":"25"},{"name":"阅读,19","source":"14","target":"20","weight":"19"},{"name":"网球,阅读,旅游,67","source":"15","target":"17","weight":"67"},{"name":"阅读,电影,跑步,59","source":"15","target":"16","weight":"59"},{"name":"网球,跑步,51","source":"15","target":"29","weight":"51"},{"name":"网球,阅读,50","source":"15","target":"27","weight":"50"},{"name":"电影,阅读,跑步,59","source":"16","target":"15","weight":"59"},{"name":"阅读,乒乓球,45","source":"16","target":"27","weight":"45"},{"name":"阅读,乒乓球,40","source":"16","target":"17","weight":"40"},{"name":"电影,阅读,37","source":"16","target":"1","weight":"37"},{"name":"阅读,旅游,网球,67","source":"17","target":"15","weight":"67"},{"name":"阅读,乒乓球,网球,61","source":"17","target":"27","weight":"61"},{"name":"阅读,乒乓球,40","source":"17","target":"16","weight":"40"},{"name":"网球,33","source":"17","target":"29","weight":"33"},{"name":"羽毛球,乒乓球,43","source":"18","target":"27","weight":"43"},{"name":"羽毛球,书法,39","source":"18","target":"28","weight":"39"},{"name":"羽毛球,38","source":"18","target":"29","weight":"38"},{"name":"羽毛球,37","source":"18","target":"31","weight":"37"},{"name":"乒乓球,27","source":"19","target":"18","weight":"27"},{"name":"乒乓球,25","source":"19","target":"34","weight":"25"},{"name":"乒乓球,22","source":"19","target":"17","weight":"22"},{"name":"乒乓球,21","source":"19","target":"27","weight":"21"},{"name":"旅行,阅读,39","source":"20","target":"27","weight":"39"},{"name":"阅读,跑步,37","source":"20","target":"15","weight":"37"},{"name":"旅行,阅读,31","source":"20","target":"1","weight":"31"},{"name":"阅读,跑步,30","source":"20","target":"16","weight":"30"},{"name":"篮球,音乐,足球,70","source":"21","target":"13","weight":"70"},{"name":"足球,39","source":"21","target":"23","weight":"39"},{"name":"篮球,37","source":"21","target":"31","weight":"37"},{"name":"篮球,35","source":"21","target":"27","weight":"35"},{"name":"电影,旅游,42","source":"22","target":"15","weight":"42"},{"name":"电影,旅游,40","source":"22","target":"38","weight":"40"},{"name":"唱歌,旅游,34","source":"22","target":"28","weight":"34"},{"name":"旅游,26","source":"22","target":"32","weight":"26"},{"name":"足球,39","source":"23","target":"21","weight":"39"},{"name":"跑步,36","source":"23","target":"29","weight":"36"},{"name":"摄影,35","source":"23","target":"41","weight":"35"},{"name":"足球,31","source":"23","target":"13","weight":"31"},{"name":"Dota,游戏,51","source":"24","target":"26","weight":"51"},{"name":"羽毛球,足球,50","source":"24","target":"13","weight":"50"},{"name":"旅行,羽毛球,45","source":"24","target":"27","weight":"45"},{"name":"羽毛球,36","source":"24","target":"29","weight":"36"},{"name":"游戏,骑行,52","source":"25","target":"8","weight":"52"},{"name":"桌球,游戏,50","source":"25","target":"5","weight":"50"},{"name":"桌球,30","source":"25","target":"40","weight":"30"},{"name":"爬山,28","source":"25","target":"29","weight":"28"},{"name":"Dota,游戏,51","source":"26","target":"24","weight":"51"},{"name":"电影,游戏,45","source":"26","target":"34","weight":"45"},{"name":"篮球,Dota,43","source":"26","target":"40","weight":"43"},{"name":"电影,游戏,43","source":"26","target":"5","weight":"43"},{"name":"篮球,网球,羽毛球,64","source":"27","target":"31","weight":"64"},{"name":"阅读,乒乓球,网球,61","source":"27","target":"17","weight":"61"},{"name":"网球,羽毛球,57","source":"27","target":"29","weight":"57"},{"name":"篮球,羽毛球,57","source":"27","target":"13","weight":"57"},{"name":"唱歌,羽毛球,48","source":"28","target":"27","weight":"48"},{"name":"跑步,羽毛球,47","source":"28","target":"29","weight":"47"},{"name":"唱歌,羽毛球,41","source":"28","target":"36","weight":"41"},{"name":"书法,羽毛球,39","source":"28","target":"18","weight":"39"},{"name":"羽毛球,网球,70","source":"29","target":"31","weight":"70"},{"name":"羽毛球,爬山,60","source":"29","target":"36","weight":"60"},{"name":"羽毛球,网球,57","source":"29","target":"27","weight":"57"},{"name":"网球,跑步,51","source":"29","target":"15","weight":"51"},{"name":"美剧,25","source":"30","target":"5","weight":"25"},{"name":"漫画,20","source":"30","target":"26","weight":"20"},{"name":"漫画,14","source":"30","target":"4","weight":"14"},{"name":"羽毛球,网球,70","source":"31","target":"29","weight":"70"},{"name":"篮球,羽毛球,网球,64","source":"31","target":"27","weight":"64"},{"name":"篮球,羽毛球,57","source":"31","target":"13","weight":"57"},{"name":"篮球,37","source":"31","target":"21","weight":"37"},{"name":"旅游,摄影,55","source":"32","target":"41","weight":"55"},{"name":"旅游,烹饪,52","source":"32","target":"33","weight":"52"},{"name":"旅游,书法,35","source":"32","target":"28","weight":"35"},{"name":"旅游,30","source":"32","target":"43","weight":"30"},{"name":"烹饪,旅游,52","source":"33","target":"32","weight":"52"},{"name":"旅游,35","source":"33","target":"43","weight":"35"},{"name":"旅游,35","source":"33","target":"41","weight":"35"},{"name":"旅游,20","source":"33","target":"17","weight":"20"},{"name":"电影,游戏,52","source":"34","target":"5","weight":"52"},{"name":"电影,游戏,45","source":"34","target":"26","weight":"45"},{"name":"乒乓球,电影,36","source":"34","target":"16","weight":"36"},{"name":"游戏,28","source":"34","target":"24","weight":"28"},{"name":"爬山,28","source":"35","target":"29","weight":"28"},{"name":"爬山,28","source":"35","target":"25","weight":"28"},{"name":"爬山,27","source":"35","target":"36","weight":"27"},{"name":"爬山,27","source":"35","target":"43","weight":"27"},{"name":"爬山,羽毛球,60","source":"36","target":"29","weight":"60"},{"name":"唱歌,羽毛球,42","source":"36","target":"27","weight":"42"},{"name":"唱歌,羽毛球,41","source":"36","target":"28","weight":"41"},{"name":"爬山,37","source":"36","target":"43","weight":"37"},{"name":"爬山,29","source":"37","target":"43","weight":"29"},{"name":"爬山,25","source":"37","target":"29","weight":"25"},{"name":"旅行,24","source":"37","target":"24","weight":"24"},{"name":"爬山,24","source":"37","target":"36","weight":"24"},{"name":"吃,睡觉,46","source":"38","target":"10","weight":"46"},{"name":"旅游,电影,42","source":"38","target":"15","weight":"42"},{"name":"旅游,电影,40","source":"38","target":"22","weight":"40"},{"name":"旅游,吃,36","source":"38","target":"28","weight":"36"},{"name":"篮球,Dota,43","source":"40","target":"26","weight":"43"},{"name":"篮球,35","source":"40","target":"21","weight":"35"},{"name":"篮球,30","source":"40","target":"31","weight":"30"},{"name":"桌球,30","source":"40","target":"25","weight":"30"},{"name":"旅游,摄影,55","source":"41","target":"32","weight":"55"},{"name":"旅游,38","source":"41","target":"43","weight":"38"},{"name":"摄影,35","source":"41","target":"23","weight":"35"},{"name":"旅游,35","source":"41","target":"33","weight":"35"},{"name":"数码,28","source":"42","target":"12","weight":"28"},{"name":"桌游,25","source":"42","target":"35","weight":"25"},{"name":"桌游,20","source":"42","target":"44","weight":"20"},{"name":"数码,16","source":"42","target":"16","weight":"16"},{"name":"旅游,38","source":"43","target":"41","weight":"38"},{"name":"爬山,37","source":"43","target":"36","weight":"37"},{"name":"爬山,35","source":"43","target":"45","weight":"35"},{"name":"爬山,35","source":"43","target":"6","weight":"35"},{"name":"乒乓球,23","source":"44","target":"34","weight":"23"},{"name":"乒乓球,22","source":"44","target":"17","weight":"22"},{"name":"乒乓球,22","source":"44","target":"18","weight":"22"},{"name":"乒乓球,21","source":"44","target":"27","weight":"21"},{"name":"爬山,35","source":"45","target":"36","weight":"35"},{"name":"爬山,35","source":"45","target":"43","weight":"35"},{"name":"爬山,33","source":"45","target":"6","weight":"33"},{"name":"睡觉,29","source":"45","target":"31","weight":"29"}];

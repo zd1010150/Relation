@@ -6,9 +6,9 @@ function redirect(id){
 
 function ForceMap(options) {
     var CircleRadius = 25;
-    var container = options.container || document.body,
-    width = options.width || 1400,
-    height = options.height || 600;
+    var container = document.getElementById('svg')|| document.body,
+    width = options.width || 1500,
+    height = options.height || 700;
     var nodesData = options.nodes; // distinguish between data and svn dom node
     var linksData = options.links;
     var nodeMap = {};
@@ -129,7 +129,7 @@ function ForceMap(options) {
             return classNames.join(' ');
         })
         .call(force.drag)
-        .on('click',function(d){
+        .on('dblclick',function(d){
             redirect(d.id);
         })
         .on('mouseover', function (d) {
@@ -173,7 +173,7 @@ function ForceMap(options) {
             return 'pattern_' + d.id;
         })
         .attr('xlink:href', function (d) {
-            return "http://10.18.218.115:2100"+d.symbol;
+            return URL+d.symbol;
         })
         .attr('mask', function (d) {
             return 'url(#circleMask)';
