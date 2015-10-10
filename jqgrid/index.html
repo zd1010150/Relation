@@ -25,7 +25,7 @@
 
         $(document).ready(function () {
             $("#jqGrid").jqGrid({
-                url: 'data.json',
+                url: 'http://kiwitest.com/jqgrid/data.json',
                 mtype: "GET",
                 datatype: "json",
                 colModel: [
@@ -55,10 +55,16 @@
                 },
                 onPaging:function(){
                     console.log("it is paging");
-                    if(!confirm("密码通过？")){
+                    if(!confirm("paging密码通过？")){
                         return "stop";
                     }
-                }
+                },
+                beforeRequest:function(){
+                     if(!confirm("beforerequest密码通过？")){
+                        return false;
+                    }
+                },
+
             });
             $("#jqGrid").jqGrid("navGrid","#jqGridPager",{add:false, edit:false, del:false});
             $("select[role='listbox']").on('change',function(){

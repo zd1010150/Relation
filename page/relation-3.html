@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <title>百年阿里414</title>
   <link rel="stylesheet" href="/css/index.css">
-  <script src="/bower_components/d3/d3.js"></script>
- <script src="/bower_components/d3-tip/index.js"></script>
+  <script src="../bower_components/d3/d3.js"></script>
+ <script src="../bower_components/d3-tip/index.js"></script>
 
 <link href="../css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -27,9 +27,9 @@
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--flexslider-->
-<link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="../css/flexslider.css" type="text/css" media="screen" />
 <!--//flexslider-->
-<link rel="stylesheet" type="text/css" href="css/third.css">
+<link rel="stylesheet" type="text/css" href="../css/third.css">
 
 
 </head>
@@ -39,10 +39,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <!---->
       <div class="header-logo">
         <div class="logo">
-        <a href="index.html"><img src="images/logo.png" alt="" ></a>
+        <a href="index.html"><img src="../images/logo.png" alt="" ></a>
         </div>
         <div class="top-nav">
-          <span class="icon"><img src="images/menu.png" alt=""> </span>
+          <span class="icon"><img src="../images/menu.png" alt=""> </span>
           <ul>
             <li ><a href="about.html" >first  </a> </li>
             <li><a href="typo.html"  >second</a></li>
@@ -63,10 +63,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="top-menu">
           <ul>
             <li ><a href="../about.html" data-hover="first">first  </a> </li>
-            <li><a href="/page/relation-0.html" data-hover="second" >second</a></li>
+            <li><a href="relation-0.html" data-hover="second" >second</a></li>
             <li><a href="../index.html">third</a></li>
-            <li><a href="/page/relation-3.html" data-hover="fourth">fourth </a></li>
-            <li><a href="/page/relation-3.html" data-hover="fifth">fifth </a></li>
+            <li><a href="relation-3.html" data-hover="fourth">fourth </a></li>
+            <li><a href="relation-3.html" data-hover="fifth">fifth </a></li>
           </ul>
 
         </div>
@@ -75,56 +75,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div id="svg"></div>
 </body>
 
-
-
+<script src="../src/forceMap.js"></script>
 <script>
-var URL="http://52.26.13.156:8080";
-     var links,nodes,id;
-
+   // var URL="";
+    var links,nodes,id;
     function callbackLinks(data){
-
-        links=data.data;
-
-
+      links=data.data;
     }
     function callbackNodes(data){
         nodes=data.data;
-
-     }
-
-
-
-
-
-  $.when($.ajax({
-        url:URL+'/asyn/findRelationInfoById.vm',
+    }
+$.when($.ajax({
+        //url:URL+'../asyn/FindRelationInfoById',
+        url:'../mock-data/links.json',
         dataType:'jsonp',
         data:'',
-        jsonp:'callbackLinks',
+
+        jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+        jsonpCallback:"callbackLinks",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
+
         timeout:3000
     }),
        $.ajax({
-        url:URL+'/asyn/findNodeInfoByIdWithRelated.vm',
+        //url:URL+'../asyn/FindNodeInfoByIdWithRelated',
+        url:'../mock-data/nodes.json',
         dataType:'jsonp',
         data:'',
-        jsonp:'callbackNodes',
+       jsonp: "callback",//传递给请求处理程序或页面的，用以获得jsonp回调函数名的参数名(默认为:callback)
+       jsonpCallback:"callbackNodes",//自定义的jsonp回调函数名称，默认为jQuery自动生成的随机函数名
         timeout:3000
     })
-       ).done(forcemap).fail(console.log("failed"));
+       ).done(function(){
+        var options = {
+          nodes: nodes,
+          links: links,
+        };
+         ForceMap(options);
+      }).fail(
+        function(){
+            console.log("failed");
+        });
 
     </script>
-<script src="/src/forceMap.js"></script>
-<!--<script src="/src/index.js"></script>-->
 
-<script >
-  function forcemap(){
-    var options = {
-    nodes: nodes,
-    links: links,
-};
-
-ForceMap(options);
-  }
 
 </script>
 
